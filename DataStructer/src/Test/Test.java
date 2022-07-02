@@ -1,60 +1,91 @@
 package Test;
 
-import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * 多线程
  */
 public class Test {
-    public static void main(String[] args) throws InterruptedException {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
+    HashMap hashMap = new HashMap<String, String>();
 
-        ArrayList arrayList=new ArrayList();
-        for (int i = 0; i < 100; i++) {
-            int finalI = i;
-            executorService.execute(new Runnable() {
-                @Override
-                public void run() {
-                     System.out.println("线程"+ finalI);
-                    arrayList.add(finalI);
-                }
-            });
+    static class  A{
+        private int anInt;
+        public A(){
 
         }
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
 
-                System.out.println("线程x" );
-                arrayList.add("线程x");
-            }
-        });
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
+        public A(int anInt) {
+            this.anInt = anInt;
+        }
 
-                System.out.println("线程y" );
-                arrayList.add("线程y");
-            }
-        });executorService.execute(new Runnable() {
-            @Override
-            public void run() {
+        @Override
+        public int hashCode() {
+            return 100;
+        }
 
-                System.out.println("线程z" );
-                arrayList.add("线程z");
+        @Override
+        public String toString() {
+            return "\nA{" +
+                    "anInt=" + anInt +
+                    '}';
+        }
+    }
+
+
+
+
+        public static void main(String[] args) throws InterruptedException {
+
+
+            int[] arr = {2,0,1};
+//                sortColors(arr);
+            int[] ints = sortColors1(arr);
+            System.out.println("ints = " + ints);
+    }
+    public static int[] sortColors1(int[] nums){
+        int n = nums.length;
+        int l = 0,r=(n-1);
+        for (int i=0;i<=r;i++){
+            while (i<=r&&nums[i]==2){
+                nums[i] = nums[r];
+                nums[r] = 2;
+                r--;
             }
-        });
-        executorService.shutdown();
-        while (true){
-            if (executorService.isTerminated()){
-                System.out.println("线程执行结束" );
-                System.out.println("arrayList = " + arrayList);
+            if(nums[i]==0){
+                nums[i] = nums[l];
+                nums[l] = 0;
+                l++;
+            }
+        }
+        return nums;
+    }
+
+    public static void sortColors(int[] nums) {
+        int[] result = new int[nums.length];
+        int l = 0, r = nums.length-1;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0 ) {
+                if(l < nums.length){
+                    result[l] = 0;
+                }
+                l++;
+            } else if (nums[i] == 2 ) {
+                if( r >= 0){
+                    result[r] = 2;
+
+                }
+                r--;
+            }
+        }
+        while (l < nums.length) {
+            if (result[l] == 2) {
                 break;
             }
-            Thread.sleep(100);
+            result[l] = 1;
+            l++;
         }
+        System.out.println("l = " + l);
     }
 }

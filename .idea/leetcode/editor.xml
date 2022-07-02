@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LeetcodeEditor">
+    <option name="projectConfig">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../LeetCode/leetcode/editor/cn/[299]猜数字游戏.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../../LeetCode/leetcode/editor/cn/doc/content/[299]猜数字游戏.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com299" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/../../../LeetCode/leetcode/editor/cn/[299]猜数字游戏.java" />
+              <option name="titleSlug" value="bulls-and-cows" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../LeetCode/leetcode/editor/cn/[5]最长回文子串.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../../LeetCode/leetcode/editor/cn/doc/content/[5]最长回文子串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com5" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/../../../LeetCode/leetcode/editor/cn/[5]最长回文子串.java" />
+              <option name="titleSlug" value="longest-palindromic-substring" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
