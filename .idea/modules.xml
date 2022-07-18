@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DataStructer/DataStructer.iml" filepath="$PROJECT_DIR$/DataStructer/DataStructer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/..//JUC.iml" filepath="$PROJECT_DIR$/..//JUC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructer/Juc.iml" filepath="$PROJECT_DIR$/DataStructer/Juc.iml" />
     </modules>
   </component>
 </project>
