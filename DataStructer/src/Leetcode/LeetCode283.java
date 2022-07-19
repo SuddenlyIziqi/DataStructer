@@ -1,4 +1,6 @@
-public class MoveZero {
+package Leetcode;
+
+public class LeetCode283 {
     public static void main(String[] args) {
 
         moveZeroes(new int[]{4,2,4,0,0,3,0,5,1,0});
@@ -20,4 +22,5 @@ public class MoveZero {
         }
         System.out.println("p1 = " + p1);
     }
+
 }
