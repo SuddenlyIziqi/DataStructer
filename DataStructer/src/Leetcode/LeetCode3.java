@@ -1,18 +1,17 @@
 package Leetcode;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * 3.无重复字符的最长子串
  */
-public class LengthOfLongestSubstring {
+public class LeetCode3 {
     public static void main(String[] args) {
         String s = "tmmzuxt";
         int i = lengthOfLongestSubstring(s);
         System.out.println("i = " + i);
     }
+
     public static int lengthOfLongestSubstring(String s) {
         int max = 0;
         int start = 0;

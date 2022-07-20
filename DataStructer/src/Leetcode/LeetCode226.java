@@ -1,14 +1,14 @@
 package Leetcode;
 
-public class InvertTree {
+public class LeetCode226 {
     public static void main(String[] args) {
-        int[] a=new int[]{4,2,7,1,3,6,9} ;
+        int[] a = new int[]{4, 2, 7, 1, 3, 6, 9};
         TreeNodeDemo treeNodeDemo = creatTree(new TreeNodeDemo(0, a[0]), 0, a);
         invertTree(treeNodeDemo);
     }
 
-    private static TreeNodeDemo creatTree(TreeNodeDemo treeNodeDemo,int i,int[]a) {
-        if(i*2+1>=a.length){
+    private static TreeNodeDemo creatTree(TreeNodeDemo treeNodeDemo, int i, int[] a) {
+        if (i * 2 + 1 >= a.length) {
             return null;
         }
         treeNodeDemo.left=new TreeNodeDemo(i*2+1,a[i*2+1]);
