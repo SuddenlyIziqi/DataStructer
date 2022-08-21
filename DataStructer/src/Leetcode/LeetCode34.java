@@ -1,7 +1,5 @@
 package Leetcode;
 
-import java.util.ArrayList;
-
 /**34. 在排序数组中查找元素的第一个和最后一个位置
  *
  */
@@ -36,8 +34,6 @@ public class LeetCode34 {
     }
 
     public static int binarySearch(int[] nums,int target){
-        String a ="";
-        ArrayList arrayList =new ArrayList<>();
         int left = 0;
         int right = nums.length-1;
         while (left<=right){

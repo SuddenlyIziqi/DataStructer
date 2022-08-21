@@ -12,10 +12,10 @@ import java.util.Arrays;
 public class InsertSort {
     public static void main(String[] args) {
         int[] arr ={2,1,5,4,12,31,12,312,1,3};
-        insertSort(arr);
+        insertSort2(arr);
 
 
-        System.out.println("arr = " + Arrays.asList(arr));
+        System.out.println("arr = " + Arrays.toString(arr));
     }
 
     public static void insertSort(int[] arr){
@@ -37,7 +37,24 @@ public class InsertSort {
             for (int i1 : arr) {
                 System.out.print(" " + i1);
             }
-            System.out.println(  );
+            System.out.println();
+        }
+
+    }
+
+
+    public static void insertSort2(int[] arr) {
+
+        for (int i = 1; i < arr.length; i++) {
+            int beSort = arr[i];
+            int j = i;
+            while (j > 0 && arr[j - 1] > beSort) {
+                arr[j] = arr[j - 1];
+                j--;
+            }
+            if (i != j) {
+                arr[j] = beSort;
+            }
         }
 
     }

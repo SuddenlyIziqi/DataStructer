@@ -28,15 +28,37 @@ public class LeetCode20 {
                 }else {
                     stack.push(aChar);
                 }
-            }else {
+            } else {
                 stack.push(aChar);
             }
         }
-        if(stack.isEmpty()){
+        if (stack.isEmpty()) {
             return true;
         }
         return false;
 
     }
 
+    public boolean isValid2(String s) {
+
+        char[] chars = s.toCharArray();
+        Stack<Character> stack = new Stack<>();
+
+        for (char aChar : chars) {
+            if (aChar == '(' || aChar == '[' || aChar == '{') {
+                stack.push(aChar);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    Character peek = stack.pop();
+                    if (peek == '(' && aChar != ')' || peek == '[' && aChar != ']' || peek == '{' && aChar != '}') {
+                        return false;
+                    }
+                }
+
+            }
+        }
+        return stack.isEmpty();
+    }
 }

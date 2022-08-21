@@ -1,6 +1,6 @@
 package Leetcode;
 
-import java.util.HashMap;
+
 import java.util.HashSet;
 
 /**
@@ -17,19 +17,49 @@ public class LeetCode142 {
         }
     }
 
-    public class Solution {
 
-        public ListNode detectCycle(ListNode head) {
-            HashSet<ListNode> set =new HashSet();
+    /**
+     * hashMap
+     *
+     * @param head
+     * @return
+     */
+    public ListNode detectCycle(ListNode head) {
+        HashSet<ListNode> set = new HashSet<>();
 
-            while (head.next!=null){
-                ListNode temp = head.next;
-                if(set.contains(temp)){
-                    return temp;
-                }
-                set.add(temp);
+        ListNode tempNode = head;
+        while (tempNode != null) {
+            if (!set.add(tempNode)) {
+                return tempNode;
+            } else {
+                set.add(tempNode);
+                tempNode = tempNode.next;
             }
-            return null;
         }
+        return null;
+    }
+
+    /**
+     * 快慢指针
+     *
+     * @param head
+     * @return
+     */
+    public ListNode detectCycle2(ListNode head) {
+        if (head == null || head.next == null) return null;
+        ListNode fast = head.next;
+        ListNode slow = head;
+
+        while (fast != slow) {
+            if (fast.next == null || fast.next.next == null) return null;
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        ListNode temp = head;
+        while (temp != slow) {
+            temp = temp.next;
+            slow = slow.next;
+        }
+        return temp;
     }
 }

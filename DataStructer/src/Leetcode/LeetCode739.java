@@ -30,15 +30,60 @@ public class LeetCode739 {
         }
         //方法二 单调栈
         Stack<Integer> stack = new Stack<>();
-        for(int i = 0;i<temperatures.length;i++){
-            while(!stack.isEmpty()&&temperatures[stack.peek()]<temperatures[i]){
+        for (int i = 0; i < temperatures.length; i++) {
+            while (!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i]) {
                 int tem = stack.pop();
-                answer[tem]=i-tem;
+                answer[tem] = i - tem;
             }
             stack.push(i);
         }
         return answer;
 
     }
+
+    /**
+     * 单调栈分析版
+     *
+     * @param temperatures
+     * @return
+     */
+    public static int[] dailyTemperatures2(int[] temperatures) {
+        int[] answer = new int[temperatures.length];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < temperatures.length; i++) {
+            if (stack.isEmpty() || temperatures[stack.peek()] > temperatures[i]) {
+                stack.push(i);
+            } else {
+                while (!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i]) {
+                    Integer index = stack.pop();
+                    answer[index] = i - index;
+                }
+                //此步容易忘记，需要在比较完之后 把心动的这个大的 temperatures[i] 的索引 放入栈中
+                stack.push(i);
+            }
+        }
+        return answer;
+
+    }
+
+    /**
+     * 单调栈优化代码版
+     *
+     * @param temperatures
+     * @return
+     */
+    public int[] dailyTemperatures3(int[] temperatures) {
+        int[] answer = new int[temperatures.length];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < temperatures.length; i++) {
+            while (!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i]) {
+                Integer index = stack.pop();
+                answer[index] = i - index;
+            }
+            stack.push(i);
+        }
+        return answer;
+    }
+
 
 }

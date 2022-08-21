@@ -18,9 +18,22 @@ public class LeetCode55 {
         for (int i = 0; i < length; i++) {
             if (maxtlenght >= i) {
                 maxtlenght = Math.max(i + nums[i], maxtlenght);
-                if (maxtlenght >= length) {
+                if (maxtlenght >= length - 1) {
                     return true;
                 }
+            }
+        }
+        return false;
+
+
+    }
+
+    public static boolean canJump2(int[] nums) {
+        int maxtlenght = 0;
+        for (int i = 0; i < nums.length; i++) {
+            maxtlenght = Math.max(i + nums[i], maxtlenght);
+            if (maxtlenght > nums.length) {
+                return true;
             }
         }
         return false;

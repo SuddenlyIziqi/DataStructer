@@ -2,9 +2,8 @@ package Leetcode;
 
 public class LeetCode5 {
     public static void main(String[] args) {
-        String cbbd = longestPalindrome("babad");
-        System.out.println("cbbd = " + cbbd);
     }
+
 
     /**
      * 动态规划
@@ -52,18 +51,24 @@ public class LeetCode5 {
     /**
      * 中心扩散法
      */
-   /* public static String longestPalindrome(String s) {
-        if(s.length()<=1) return s;
+    public static String longestPalindrome1(String s) {
+        if (s.length() <= 1) return s;
         char[] chars = s.toCharArray();
         int begin = 0;
         int maxLen = 0;
         for (int i = 0; i < chars.length; i++) {
             int odd = expandAroundCenter(chars, i, i);
-            int even = expandAroundCenter(chars, i, i+1);
-            int len = Math.max(odd,even);
-            if(len>=maxLen){
+            int even = expandAroundCenter(chars, i, i + 1);
+            int len = Math.max(odd, even);
+            if (len >= maxLen) {
                 maxLen = len;
-                begin = i-(maxLen-1)/2;
+                begin = i - (maxLen - 1) / 2;
+                //i-(maxLen-1)/2 解释 即为 最左边界的索引地址 无论是偶还是奇； 奇数的话(maxLen-1)/2 偶数的话向下取奇数 还是这个数
+                /*
+                 *  i为当前所在 索引， (maxLen-1)/2为当前所在索引到 左右两边的左边界的距离
+                 *   比如 maxLen是奇数，也就是 1 2 3 4  ： i = 2 的时候， maxLen = 3，那么 左边界距离为 （3-1）/2 这个 '-1'是因为中心点（index = 2）所在索引
+                 *   比如 maxLen是偶数，也就是 1 2 3 4  ： i = 2 的时候， maxLen = 4，那么 左边界距离为 （4-1）/2 这个 1 为中心点所在索引 左边界距离其实就是 此时为奇数的边界距离
+                 * */
             }
         }
         return s.substring(begin,begin+maxLen);
@@ -73,24 +78,23 @@ public class LeetCode5 {
             left--;
             right++;
         }
-        return right-left-1;
+        return right - left - 1;//此处由于最后一组 i和j是不满足条件的 因此需要 r-1+l-1+1
     }
-*/
 
 
     /**
      * 暴力解法
      */
-   /*     public static String longestPalindrome(String s) {
-        if(s.length()<=1) return s;
+    public static String longestPalindrome2(String s) {
+        if (s.length() <= 1) return s;
         char[] chars = s.toCharArray();
         int begin = 0;
         int maxLen = 1;
         for (int i = 0; i < chars.length; i++) {
-            for (int j = i+1; j < chars.length; j++) {
-                if (j - i +1> maxLen && validePalindromic(chars,i,j)){
+            for (int j = i + 1; j < chars.length; j++) {
+                if (j - i + 1 > maxLen && validePalindromic(chars, i, j)) {
                     begin = i;
-                    maxLen = j-i+1;
+                    maxLen = j - i + 1;
                 }
             }
         }
@@ -105,5 +109,5 @@ public class LeetCode5 {
             right--;
         }
         return true;
-    }*/
+    }
 }

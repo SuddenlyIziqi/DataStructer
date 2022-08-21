@@ -1,12 +1,12 @@
 package Test;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.HashMap;
 
 /**
  * 多线程
  */
 public class Test {
+    Object o = new Object();
 
     HashMap hashMap = new HashMap<String, String>();
 

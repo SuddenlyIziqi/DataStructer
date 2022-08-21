@@ -1,11 +1,13 @@
 package Leetcode;
-
+// 前序遍历:[ 根节点, [左子树的前序遍历结果], [右子树的前序遍历结果] ]
+// 中序遍历:[ [左子树的中序遍历结果], 根节点, [右子树的中序遍历结果] ]
 public class LeetCode105 {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return   buildTreeHelper(preorder,0,preorder.length,inorder,0,inorder.length);
+        return buildTreeHelper(preorder, 0, preorder.length, inorder, 0, inorder.length);
     }
-    public TreeNode  buildTreeHelper(int[] preorder,int pStrat,int pEnd ,int[] inorder,int iStrat,int iEnd){
-        if(pStrat==pEnd){
+
+    public TreeNode buildTreeHelper(int[] preorder, int pStrat, int pEnd, int[] inorder, int iStrat, int iEnd) {
+        if (pStrat == pEnd) {
             return null;
         }
         int rootValue = preorder[pStrat];
