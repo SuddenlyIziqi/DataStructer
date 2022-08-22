@@ -1,42 +1,50 @@
 package Leetcode;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 207. 课程表
+ *
  */
 public class LeetCode207 {
     public static void main(String[] args) {
 
-
     }
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        //建立存放 课程的list   其中 index为前置课程，对应的value 为学了改前置课程之后 可以学的课程
-        List<List<Integer>> courseList = new ArrayList<>();
-        //初始化
-        for (List<Integer> list : courseList) {
-            courseList.add(new ArrayList<>());
-        }
-        //建立 存放前置课程数目的 数组  其中 index为当前课程编号  对应的value 为前置课程
-        int[] preCourses = new int[numCourses];
+        List<List<Integer>> list= new ArrayList<>();
+        int[] preCourse = new int[numCourses];
 
-        //把prerequisites导入 上面两个集合
+        for (int i = 0; i < numCourses; i++) {
+            list.add(new ArrayList<>());
+        }
         for (int[] prerequisite : prerequisites) {
             int cur = prerequisite[0];
             int pre = prerequisite[1];
-            preCourses[cur]++;
-            courseList.get(pre).add(cur);
+            preCourse[cur]++;
+            list.get(pre).add(cur);
         }
-        //遍历 前置课程数组，如果当前课程的前置数组 ==0，说明可以学习
-        //
+
+        Deque<Integer> queue = new LinkedList();
         for (int i = 0; i < numCourses; i++) {
-
+            if(preCourse[i]==0){
+                queue.offer(i);
+            }
         }
-
-
-        return false;
+        int count = 0;
+        while (!queue.isEmpty()){
+            Integer pop = queue.pop();
+            count++;
+            List<Integer> integers = list.get(pop);
+            for (Integer integer : integers) {
+                preCourse[integer]--;
+                if(preCourse[integer]==0){
+                    queue.offer(integer);
+                }
+            }
+        }
+        return count==numCourses;
     }
-
 }
